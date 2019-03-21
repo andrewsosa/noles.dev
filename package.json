@@ -1,9 +1,16 @@
 {
   "name": "noles.dev",
   "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:andrewsosa/noles.dev.git",
+  "author": "Andrew Sosa <andrew@andrewsosa.com>",
+  "license": "MIT",
   "private": true,
+  "workspaces": [
+    "api",
+    "web"
+  ],
   "devDependencies": {
-    "dotenv": "^6.2.0",
     "eslint": "5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
@@ -12,33 +19,5 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4"
-  },
-  "dependencies": {
-    "@githubprimer/octicons-react": "^8.5.0",
-    "axios": "^0.18.0",
-    "bulma": "^0.7.4",
-    "node-sass": "^4.11.0",
-    "normalize.css": "^8.0.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
-    "spectre.css": "^0.5.8",
-    "tachyons": "^4.11.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
