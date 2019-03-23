@@ -18,11 +18,16 @@ export default class UserGrid extends Component {
     axios
       .get(apiUrl)
       .then(res => res.data)
-      .then(data => this.setState({ userdata: data, isLoaded: true }));
+      .then(data => {
+        this.setState({ userdata: data, isLoaded: true });
+      });
   }
+
+  onChildLoad() {}
 
   render() {
     const { userdata, isLoaded } = this.state;
+
     return (
       <div className="graphik">
         {isLoaded && (
