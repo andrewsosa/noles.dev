@@ -1,0 +1,18 @@
+@import "../../styles/variables";
+
+@media (min-width: $desktop) {
+    .nav {
+        header {
+            flex-direction: row;
+
+            nav {
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+.brand {
+    font-family: $mono;
+    color: var(--gray);
+}

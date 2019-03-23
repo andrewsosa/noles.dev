@@ -1,13 +1,19 @@
 import React from "react";
 
-import "../../styles/bulma.scss";
 import styles from "./Button.module.scss";
 
-const Button = props => {
+const Button = ({ text, color }) => {
+  color = color || "#000";
   return (
-    <a href={props.href} className={styles.btn} style={props.style}>
-      {props.children}
-    </a>
+    <span
+      className={styles.btn}
+      style={{
+        backgroundColor: color,
+      }}
+    >
+      <span className={styles.btnText}>{text}</span>
+      <span className={styles.btnArrow}>→</span>
+    </span>
   );
 };
 

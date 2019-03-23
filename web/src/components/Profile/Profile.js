@@ -1,55 +1,81 @@
 /* eslint-disable camelcase */
 import React from "react";
-import Octicon, { Link, Location } from "@githubprimer/octicons-react";
+import Octicon, {
+  Link,
+  Location,
+  MarkGithub,
+} from "@githubprimer/octicons-react";
+import ImagePalette from "react-image-palette";
+import tinycolor from "tinycolor2";
 
-import styles from "./Profile.module.sass";
-
+import styles from "./Profile.module.scss";
 import Avatar from "../Avatar";
-import Button from "../Button";
 
 const Profile = ({ user }) => {
-  console.log(user);
   const { avatar_url, name, login, blog, location, bio } = user;
 
   const blogDisplay = url => url.replace(/https?:\/\//, "");
   const blogHref = url => `http://${blogDisplay(url)}`;
 
   return (
-    <div className={styles.profile}>
-      {/* Github Avatar */}
-      <Avatar url={avatar_url} />
+    <ImagePalette image={avatar_url} crossOrigin={true}>
+      {({ backgroundColor, color, alternativeColor }) => {
+        const profileColor =
+          [color, backgroundColor, alternativeColor]
+            .map(raw =>
+              (col => ({ col, darkEnough: col.getBrightness() <= 220 }))(
+                tinycolor(raw),
+              ),
+            )
+            .find(el => el.darkEnough)
+            .col.toHexString() || "#000000";
 
-      {/* Display Name & Github handle */}
-      <h2 className={`f5 f5-ns mb0 black-90 ${styles.name}`}>
-        {name || login}
-      </h2>
-      <p className={styles.handle}>@{login}</p>
+        return (
+          <div
+            className={styles.profile}
+            style={{
+              "--profile-theme-color": profileColor,
+            }}
+          >
+            {/* Github Avatar */}
+            <div className={styles.image}>
+              <Avatar url={avatar_url} />
+            </div>
 
-      {/* Location */}
-      <p className={styles.location}>
-        <Octicon className={styles.octicon} icon={Location} />
-        {location || "N/A"}
-      </p>
+            {/* Display Name & Github handle */}
+            <h2 className={styles.name}>{name || login}</h2>
+            <p className={styles.handle}>@{login}</p>
 
-      {/* Website Link */}
-      <p className={styles.website}>
-        <Octicon className={styles.octicon} icon={Link} />
-        {blog ? <a href={blogHref(blog)}>{blogDisplay(blog)}</a> : "N/A"}
-      </p>
+            {/* Location */}
+            <p className={styles.location}>
+              <Octicon className={styles.octicon} icon={Location} />
+              {location || "N/A"}
+            </p>
 
-      {/* Bio */}
-      <p className={`black-90 ${styles.notes}`}>{bio}</p>
+            {/* Website Link */}
+            <p className={styles.website}>
+              <Octicon className={styles.octicon} icon={Link} />
+              {blog ? <a href={blogHref(blog)}>{blogDisplay(blog)}</a> : "N/A"}
+            </p>
 
-      {/* Github Link Button */}
-      <Button
-        href={`https://github.com/${login}`}
-        style={{
-          marginTop: "auto",
-        }}
-      >
-        <span>Github</span>
-      </Button>
-    </div>
+            {/* Bio */}
+            <p className={`black-90 ${styles.bio}`}>{bio}</p>
+
+            {/* Github Link Button */}
+            <a
+              href={`https://github.com/${login}`}
+              className={styles.linkContainer}
+            >
+              <span className={styles.linkText}>
+                <Octicon className={styles.octicon} icon={MarkGithub} />
+                <span>Github</span>
+                <span className={styles.linkArrow}>→</span>
+              </span>
+            </a>
+          </div>
+        );
+      }}
+    </ImagePalette>
   );
 };
 

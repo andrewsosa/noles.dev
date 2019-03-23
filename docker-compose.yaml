@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+    api:
+        image: noles.dev/api
+        build:
+            context: .
+            dockerfile: docker/api.dockerfile
+        command: "yarn workspace api run dev"
+        environment:
+            NODE_ENV: development
+        ports:
+            - "3000:3000"
