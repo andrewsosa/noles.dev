@@ -1,0 +1,10 @@
+@import "./variables";
+
+.graphik {
+    -webkit-font-smoothing: antialiased;
+    font-family: $graphik;
+}
+
+.mono {
+    font-family: $mono;
+}

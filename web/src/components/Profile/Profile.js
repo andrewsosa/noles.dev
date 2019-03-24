@@ -21,7 +21,9 @@ class Profile extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    const { profileColor } = this.state;
+    const { onRender, user } = this.props;
+    if (profileColor) onRender(user.login);
   }
 
   render() {

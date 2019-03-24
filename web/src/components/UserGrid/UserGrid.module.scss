@@ -1,6 +1,20 @@
+@import "../../styles/type";
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 2rem;
     // padding: 2rem;
+}
+
+.wrapper {
+    @extend .graphik;
+    position: relative;
+}
+
+.loader {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    z-index: 100;
 }

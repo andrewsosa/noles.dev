@@ -29,12 +29,4 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 
 @import "./variables";
-
-.graphik {
-    -webkit-font-smoothing: antialiased;
-    font-family: $graphik;
-}
-
-.mono {
-    font-family: $mono;
-}
+@import "./type";

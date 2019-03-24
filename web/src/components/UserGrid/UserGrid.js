@@ -1,40 +1,91 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import Profile from "../Profile";
 import styles from "./UserGrid.module.scss";
+import Profile from "../Profile";
+import Loader from "../Loader";
 
 export default class UserGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: false,
+      dataLoaded: false,
+      profilesLoaded: false,
       userdata: [],
+      loadedNodes: 0,
     };
   }
 
   componentDidMount() {
+    console.log("componentDidMount");
     const apiUrl = "http://localhost:3001/api/userdata";
     axios
       .get(apiUrl)
       .then(res => res.data)
       .then(data => {
-        this.setState({ userdata: data, isLoaded: true });
+        this.setState({ userdata: data, dataLoaded: true });
       });
   }
 
-  onChildLoad() {}
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(
+      "shouldComponentUpdate",
+      nextState.loadedNodes,
+      nextState.profilesLoaded,
+    );
+
+    // update if the profiles are loaded, or if the # of loaded nodes didn't
+    // change between updates. (this will skip the update if the # of loaded nodes
+    // DID change during the update )
+    return (
+      nextState.profilesLoaded ||
+      this.state.loadedNodes === nextState.loadedNodes
+    );
+  }
+
+  onChildLoad(text) {
+    console.log("onChildLoad", text);
+    const { loadedNodes, userdata } = this.state;
+    const profilesLoaded =
+      loadedNodes !== 0 && loadedNodes + 1 === userdata.length;
+    this.setState({
+      profilesLoaded,
+      loadedNodes: loadedNodes + 1,
+    });
+  }
+
+  allChildrenLoaded(state) {
+    const result =
+      state.loadedNodes !== 0 && state.loadedNodes === state.userdata.length;
+    console.log("allChildrenLoaded?", result);
+    console.log(state.loadedNodes, state.userdata.length);
+    return result;
+  }
 
   render() {
-    const { userdata, isLoaded } = this.state;
+    console.log("RENDER");
+    const { userdata, dataLoaded, profilesLoaded } = this.state;
+
+    // If the profiles are loaded, pass a dummy onRender
+    const onRender = !profilesLoaded ? this.onChildLoad.bind(this) : () => ({});
 
     return (
-      <div className="graphik">
-        {isLoaded && (
-          <div className={styles.grid}>
+      <div className={styles.wrapper}>
+        {dataLoaded && (
+          <div
+            className={styles.grid}
+            style={{
+              opacity: profilesLoaded ? 1 : 0,
+            }}
+          >
             {userdata.map(user => (
-              <Profile key={user.id} user={user} />
+              <Profile key={user.id} user={user} onRender={onRender} />
             ))}
+          </div>
+        )}
+        {!profilesLoaded && (
+          <div className={styles.loader}>
+            <Loader />
           </div>
         )}
       </div>

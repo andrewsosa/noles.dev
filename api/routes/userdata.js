@@ -14,7 +14,7 @@ const loadSingleUser = async username => {
 
   try {
     ({ data } = await axios.get(githubUrl(username)));
-    mcache.put(key, data, 10 * 60 * 1000);
+    mcache.put(key, data, 60 * 60 * 1000);
     return data;
   } catch (err) {
     console.log(err);
