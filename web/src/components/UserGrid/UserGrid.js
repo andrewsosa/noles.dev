@@ -19,9 +19,11 @@ export default class UserGrid extends Component {
   componentDidMount() {
     console.log("componentDidMount");
     const apiUrl = "http://localhost:3001/api/userdata";
+    const { limit } = this.props;
     axios
       .get(apiUrl)
       .then(res => res.data)
+      .then(data => (limit ? data.slice(0, limit) : data))
       .then(data => {
         this.setState({ userdata: data, dataLoaded: true });
       });
@@ -71,23 +73,21 @@ export default class UserGrid extends Component {
 
     return (
       <div className={styles.wrapper}>
-        {dataLoaded && (
-          <div
-            className={styles.grid}
-            style={{
-              opacity: profilesLoaded ? 1 : 0,
-            }}
-          >
-            {userdata.map(user => (
-              <Profile key={user.id} user={user} onRender={onRender} />
-            ))}
-          </div>
-        )}
         {!profilesLoaded && (
           <div className={styles.loader}>
             <Loader />
           </div>
         )}
+        <div
+          className={styles.grid}
+          style={{
+            opacity: profilesLoaded ? 1 : 0,
+          }}
+        >
+          {userdata.map(user => (
+            <Profile key={user.id} user={user} onRender={onRender} />
+          ))}
+        </div>
       </div>
     );
   }

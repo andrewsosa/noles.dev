@@ -14,6 +14,9 @@ const Avatar = ({ url }) => {
         className="db bg-center cover aspect-ratio--object"
         src={url}
         alt="Closeup of a tabby cat yawning."
+        style={{
+          borderRadius: "3px",
+        }}
       />
     </div>
   );

@@ -5,7 +5,7 @@ const Loader = props => {
   return (
     <div className={styles.container}>
       <div>
-        <h1 className={styles.heading}>NOLES.DEV</h1>
+        <h1 className={styles.heading}>Finding some coders...</h1>
         <div className={styles.spinner} />
       </div>
     </div>

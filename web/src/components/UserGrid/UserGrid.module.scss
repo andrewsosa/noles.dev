@@ -1,20 +1,24 @@
 @import "../../styles/type";
 
+$grid-gap: 2rem;
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-gap: $grid-gap;
     // padding: 2rem;
 }
 
 .wrapper {
     @extend .graphik;
     position: relative;
+    padding-bottom: $grid-gap;
 }
 
 .loader {
-    position: absolute;
+    // position: absolute;
     top: 4rem;
     width: 100%;
     z-index: 100;
+    height: 100vh;
 }

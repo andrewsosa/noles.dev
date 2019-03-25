@@ -9,10 +9,10 @@
                 margin-left: auto;
             }
         }
-    }
-}
 
-.brand {
-    font-family: $mono;
-    color: var(--gray);
+        span {
+            opacity: 0;
+            padding: 0 0.25rem;
+        }
+    }
 }
