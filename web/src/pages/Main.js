@@ -10,11 +10,39 @@ import UserGrid from "../components/UserGrid";
 
 const bgGray = { backgroundColor: "var(--gray)" };
 
+const ButtonGroup = ({ children }) => (
+  <div className="flex-ns justify-center">
+    {children.map(child => (
+      <span className="w5 mt4 mh3">{child}</span>
+    ))}
+  </div>
+);
+
 const Main = () => (
   <MainLayout>
     {/* Usergrid + See All */}
     <Container>
       <div className="pv5">
+        <div className=" pb5">
+          <h1 className="f2 fw7 lh-title db tc pb2">
+            Find your next developer here.
+          </h1>
+          <p className="f4 lh-copy tc measure center">
+            NOLES.DEV is a community of developers searching for their next big
+            project.
+          </p>
+          <ButtonGroup>
+            <Button style={bgGray} href={"/for/developers"} arrow>
+              <span className="pl3">For Developers</span>
+            </Button>
+            <Button style={bgGray} href={"/for/recruiters"} arrow>
+              <span className="pl3">For Recruiters</span>
+            </Button>
+            <Button style={bgGray} href={"/for/organizations"} arrow>
+              <span className="pl3">For Student Groups</span>
+            </Button>
+          </ButtonGroup>
+        </div>
         <UserGrid limit={8} />
         <Link to="/developers">
           <Button style={bgGray} arrow>

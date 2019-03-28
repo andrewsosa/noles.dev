@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import styles from "./NavHeader.module.scss";
 import Button from "../Button";
 
-const NavSpacer = () => <span class="f5 f4-ns spacer">/</span>;
+const NavSpacer = () => <span className="f5 f4-ns spacer">/</span>;
 
 const NavItem = ({ text, href, children }) => (
-  <a class="link dim ph3" href={href}>
-    {text || children}
-  </a>
+  <span className="link dim ph3">
+    <Link to={href}>{text || children}</Link>
+  </span>
 );
 
 const NavMenu = () => (
   <nav class="v-mid graphik f6 f5-ns fw7">
-    <NavItem text={"About"} href={"#"} />
+    <NavItem text={"Members"} href={"/developers"} />
     <NavSpacer />
     <NavItem text={"Jobs"} href={"#"} />
     {/* <NavSpacer />
