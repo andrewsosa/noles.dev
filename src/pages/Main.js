@@ -12,8 +12,10 @@ const bgGray = { backgroundColor: "var(--gray)" };
 
 const ButtonGroup = ({ children }) => (
   <div className="flex-ns justify-center">
-    {children.map(child => (
-      <span className="w5 mt4 mh3">{child}</span>
+    {children.map((child, i) => (
+      <span key={i} className="w5 mt4 mh3">
+        {child}
+      </span>
     ))}
   </div>
 );
