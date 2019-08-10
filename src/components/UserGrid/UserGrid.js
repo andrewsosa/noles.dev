@@ -18,7 +18,7 @@ export default class UserGrid extends Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    const apiUrl = "http://localhost:3001/api/users";
+    const apiUrl = "/api/users";
     const { limit } = this.props;
     axios
       .get(apiUrl)
@@ -56,6 +56,7 @@ export default class UserGrid extends Component {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   allChildrenLoaded(state) {
     const result =
       state.loadedNodes !== 0 && state.loadedNodes === state.userdata.length;
@@ -66,7 +67,7 @@ export default class UserGrid extends Component {
 
   render() {
     console.log("RENDER");
-    const { userdata, dataLoaded, profilesLoaded } = this.state;
+    const { userdata, profilesLoaded } = this.state;
 
     // If the profiles are loaded, pass a dummy onRender
     const onRender = !profilesLoaded ? this.onChildLoad.bind(this) : () => ({});

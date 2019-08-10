@@ -5,37 +5,37 @@
   "devDependencies": {
     "dotenv": "^6.2.0",
     "eslint": "5.12.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.3.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.13.6",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "micro-dev": "^3.0.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.18.2"
   },
   "dependencies": {
     "@githubprimer/octicons-react": "^8.5.0",
-    "@octokit/rest": "^16.23.2",
-    "axios": "^0.18.0",
-    "bulma": "^0.7.4",
+    "@octokit/rest": "^16.28.6",
+    "axios": "^0.18.1",
+    "bulma": "^0.7.5",
     "finalhandler": "^1.1.1",
-    "fs-router": "^0.4.2",
-    "hexsorter": "^1.3.1",
+    "fs-router": "^0.4.3",
+    "hexsorter": "^1.5.0",
     "memory-cache": "^0.2.0",
-    "micro": "^9.3.3",
+    "micro": "^9.3.4",
     "micro-cors": "^0.1.1",
     "micro-query": "^0.3.0",
     "micro-redirect": "^1.0.0",
     "microrouter": "^3.1.3",
     "morgan": "^1.9.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-image-palette": "^0.2.4",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^2.1.8",
     "router": "^1.3.3",
     "shuffle-array": "^1.0.1",
     "spectre.css": "^0.5.8",
@@ -43,11 +43,11 @@
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
+    "dev": "react-scripts start --port $PORT",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "api": "micro-dev -p 3001 api"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,5 +58,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3000"
 }

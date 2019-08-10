@@ -1,15 +1,14 @@
 const axios = require("axios");
 const query = require("micro-query");
 const redirect = require("micro-redirect");
-const githubCache = require("../../lib/cache/githubToken");
+const githubCache = require("../cache/githubToken");
 
 const {
   GITHUB_CLIENT_ID: client_id, // eslint-disable-line camelcase
   GITHUB_CLIENT_SECRET: client_secret, // eslint-disable-line camelcase
 } = process.env;
 
-module.exports.path = "/api/auth/callback";
-module.exports.GET = async (req, res) => {
+module.exports = async (req, res) => {
   const { code } = query(req);
 
   console.log({ client_id, client_secret, code });
@@ -23,4 +22,4 @@ module.exports.GET = async (req, res) => {
   const ref = githubCache.put(oauthToken);
 
   redirect(res, 302, `${host}/confirm?token=${ref}`);
-};
+});

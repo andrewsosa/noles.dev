@@ -28,7 +28,7 @@ class Profile extends Component {
 
   render() {
     const { avatar_url, name, login, blog, location, bio } = this.props.user;
-    const { profileColor, isLoaded } = this.state;
+    const { profileColor } = this.state;
 
     const blogDisplay = url => url.replace(/https?:\/\//, "");
     const blogHref = url => `http://${blogDisplay(url)}`;
@@ -80,7 +80,7 @@ class Profile extends Component {
         {!profileColor && (
           <ImagePalette image={avatar_url} crossOrigin={true}>
             {({ backgroundColor, color, alternativeColor }) => {
-              const profileColor =
+              const thisProfileColor =
                 [color, backgroundColor, alternativeColor]
                   .map(raw =>
                     (col => ({ col, darkEnough: col.getBrightness() <= 220 }))(
@@ -89,7 +89,7 @@ class Profile extends Component {
                   )
                   .find(el => el.darkEnough)
                   .col.toHexString() || "#000000";
-              this.setState({ profileColor, isLoaded: true });
+              this.setState({ profileColor: thisProfileColor, isLoaded: true });
               return <div />;
             }}
           </ImagePalette>
