@@ -1,18 +1,18 @@
-@import "../../styles/variables";
+@import "../../styles/dimens";
 
 @media (min-width: $desktop) {
-    .nav {
-        header {
-            flex-direction: row;
+  .nav {
+    header {
+      flex-direction: row;
 
-            nav {
-                margin-left: auto;
-            }
-        }
-
-        span.spacer {
-            opacity: 0;
-            padding: 0 0.25rem;
-        }
+      nav {
+        margin-left: auto;
+      }
     }
+
+    span.spacer {
+      opacity: 0;
+      padding: 0 0.25rem;
+    }
+  }
 }

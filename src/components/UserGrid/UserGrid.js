@@ -18,7 +18,7 @@ export default class UserGrid extends Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    const apiUrl = "/api/users";
+    const apiUrl = `${process.env.API_PREFIX}/users`;
     const { limit } = this.props;
     axios
       .get(apiUrl)
@@ -33,7 +33,7 @@ export default class UserGrid extends Component {
     console.log(
       "shouldComponentUpdate",
       nextState.loadedNodes,
-      nextState.profilesLoaded,
+      nextState.profilesLoaded
     );
 
     // update if the profiles are loaded, or if the # of loaded nodes didn't

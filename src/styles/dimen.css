@@ -1,0 +1,8 @@
+:root {
+  /* DIMENSIONS */
+  --sidebar: 310px;
+  --non-mobile: 535px;
+  --desktop: 820px;
+  --s24: 24px;
+  --sidebarHeight: 208px;
+}

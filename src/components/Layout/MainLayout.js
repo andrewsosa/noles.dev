@@ -3,8 +3,16 @@ import Container from "./Container";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 
+import "tachyons/css/tachyons.css";
+
+import "../../styles/fonts.css";
+import "../../styles/normalize.css";
+import "../../styles/dimen.css";
+import "../../styles/type.css";
+import "../../styles/colors.css";
+
 const MainLayout = ({ children }) => (
-  <Fragment>
+  <div className="graphik">
     {/* Start with Navbar */}
     <Container>
       <Navbar />
@@ -15,7 +23,7 @@ const MainLayout = ({ children }) => (
 
     {/* Then the footer */}
     <Footer />
-  </Fragment>
+  </div>
 );
 
 export default MainLayout;

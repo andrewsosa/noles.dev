@@ -1,38 +1,36 @@
-@import "../../styles/variables";
-
 .btn {
-    border-radius: 3px;
-    text-decoration: none;
-    text-align: center;
-    padding: 0.5rem 1.25rem;
-    color: white;
-    transition: all ease 0.3s;
-    position: relative;
-    transition: all ease 0.3s;
+  border-radius: 3px;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  color: white;
+  transition: all ease 0.3s;
+  position: relative;
+  transition: all ease 0.3s;
 }
 
 .btnText {
-    transition: all ease 0.3s;
+  transition: all ease 0.3s;
 }
 
 .btnArrow {
-    opacity: 0;
-    transition: all ease 0.3s;
-    position: absolute;
-    font-family: $sans-serif;
+  opacity: 0;
+  transition: all ease 0.3s;
+  position: absolute;
+  font-family: var(--sans-serif);
 }
 
 .btn:hover {
-    transform: scaleX(2);
+  transform: scaleX(2);
 }
 
 .btn:hover .btnText {
-    transform: translateX(-12px);
-    transition: all ease 0.3s;
+  transform: translateX(-12px);
+  transition: all ease 0.3s;
 }
 
 .btn:hover .btnArrow {
-    opacity: 1;
-    transform: translateX(16px);
-    transition: all ease 0.3s;
+  opacity: 1;
+  transform: translateX(16px);
+  transition: all ease 0.3s;
 }

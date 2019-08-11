@@ -1,7 +1,7 @@
 const axios = require("axios");
 const query = require("micro-query");
 const redirect = require("micro-redirect");
-const githubCache = require("../cache/githubToken");
+const githubCache = require("../../cache/githubToken");
 
 const {
   GITHUB_CLIENT_ID: client_id, // eslint-disable-line camelcase

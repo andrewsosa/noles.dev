@@ -1,4 +1,3 @@
-const { send } = require("micro");
 const mcache = require("memory-cache");
 const axios = require("axios");
 const shuffle = require("shuffle-array");
@@ -22,7 +21,8 @@ const loadSingleUser = async username => {
   }
 };
 
-module.exports = async (req, res) => {
+// eslint-disable-next-line no-unused-vars
+module.exports.handler = async (event, context) => {
   const users = shuffle([
     "andrewsosa",
     "glfmn",
@@ -35,6 +35,12 @@ module.exports = async (req, res) => {
     "CFarzaneh",
     "mougharik",
   ]);
+
   const data = await Promise.all(users.map(loadSingleUser));
-  return send(res, 200, data);
+
+  return {
+    statusCode: 200,
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(data),
+  };
 };

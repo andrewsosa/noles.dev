@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 import styles from "./NavHeader.module.scss";
 
 const NavSpacer = () => <span className="f5 f4-ns spacer">/</span>;
@@ -15,18 +15,8 @@ const NavMenu = () => (
     <NavItem text={"Members"} href={"/developers"} />
     <NavSpacer />
     <NavItem text={"Jobs"} href={"#"} />
-    {/* <NavSpacer />
-          <NavItem text={"Newsletter"} href={"#"} /> */}
     <NavSpacer />
     <NavItem text={"Join"} href={"#"} />
-    {/* <NavItem href={"#"}>
-            <Button
-              text={"Join"}
-              style={{
-                padding: "0.5rem 1.5rem",
-              }}
-            />
-          </NavItem> */}
   </nav>
 );
 

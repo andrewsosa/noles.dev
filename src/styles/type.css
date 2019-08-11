@@ -1,0 +1,21 @@
+:root {
+  --pitch: "Pitch Sans Web", Consolas, monaco, monospace;
+  --mono: "Inconsolata", Consolas, monaco, monospace;
+  --graphik: "Graphik Web", -apple-system, BlinkMacSystemFont, "avenir next",
+    avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif;
+  --sans-serif: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
+    "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif;
+  --weight-medium: 500;
+  --weight-regular: 400;
+}
+
+.graphik {
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--graphik);
+}
+
+.mono {
+  font-family: var(--mono);
+}
