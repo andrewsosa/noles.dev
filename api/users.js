@@ -1,19 +1,21 @@
-const mcache = require("memory-cache");
 const axios = require("axios");
 const shuffle = require("shuffle-array");
+const cache = require("./lib/cache");
+const db = require("./lib/db");
 
-const cacheKey = username => `__userdata__${username}`;
 const githubUrl = username => `https://api.github.com/users/${username}`;
 
 const loadSingleUser = async username => {
-  console.log("loading", username);
-  const key = cacheKey(username);
-  let data = mcache.get(key);
-  if (data) return data;
+  let data = await cache.userdata.get(username);
+  if (data) {
+    console.log("Using cache for", username);
+    return data;
+  }
 
   try {
+    console.log("Hitting remote for", username);
     ({ data } = await axios.get(githubUrl(username)));
-    mcache.put(key, data, 60 * 60 * 1000);
+    cache.userdata.put(username, 300, data);
     return data;
   } catch (err) {
     console.log(err);
@@ -23,19 +25,7 @@ const loadSingleUser = async username => {
 
 // eslint-disable-next-line no-unused-vars
 module.exports.handler = async (event, context) => {
-  const users = shuffle([
-    "andrewsosa",
-    "glfmn",
-    "marlanmct",
-    "manterolat",
-    "jfreedman0212",
-    "keishon104",
-    "masudias",
-    "ScheerMT",
-    "CFarzaneh",
-    "mougharik",
-  ]);
-
+  const users = shuffle(await db.users().getAll());
   const data = await Promise.all(users.map(loadSingleUser));
 
   return {
