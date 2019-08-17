@@ -11,8 +11,12 @@ module.exports.handler = async (event, context) => {
   // Attempt to save the user
   let result = true;
   try {
-    console.log("Adding", login);
-    db.users().addUser(login, emails);
+    if (db.users().checkUser(login))
+      console.log(`${login} already member, skipping...`);
+    else {
+      console.log("Adding", login);
+      db.users().addUser(login, emails);
+    }
   } catch (err) {
     result = false;
   }
