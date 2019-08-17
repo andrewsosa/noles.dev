@@ -8,3 +8,11 @@
   --text: var(--gray);
   color: var(--gray);
 }
+
+/* html {
+  background-color: var(--gray);
+}
+
+body {
+  background-color: var(--background);
+} */

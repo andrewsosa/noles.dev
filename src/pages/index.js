@@ -54,7 +54,11 @@ const Main = () => (
     </Container>
 
     {/* Why NOLES.DEV */}
-    <div className="pv5 white" style={{ backgroundColor: "var(--gray)" }}>
+    <div
+      id="about"
+      className="pv5 white"
+      style={{ backgroundColor: "var(--gray)" }}
+    >
       <div className="mw8 ph4 center">
         <h3 className="f5 fw7 pv4 ttu tracked">About</h3>
         <div className="w-100 center mw9">

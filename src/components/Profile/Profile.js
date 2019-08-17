@@ -9,7 +9,28 @@ import ImagePalette from "react-image-palette";
 import tinycolor from "tinycolor2";
 
 import styles from "./Profile.module.scss";
-import Avatar from "../Avatar";
+
+const Avatar = ({ url }) => {
+  return (
+    <div
+      className="aspect-ratio aspect-ratio--1x1"
+      style={{
+        gridColumn: "1/2",
+        gridRow: "1/3",
+        alignSelf: "start",
+      }}
+    >
+      <img
+        className="db bg-center cover aspect-ratio--object"
+        src={url}
+        alt="A profile picture"
+        style={{
+          borderRadius: "3px",
+        }}
+      />
+    </div>
+  );
+};
 
 class Profile extends Component {
   constructor(props) {
@@ -84,8 +105,8 @@ class Profile extends Component {
                 [color, backgroundColor, alternativeColor]
                   .map(raw =>
                     (col => ({ col, darkEnough: col.getBrightness() <= 220 }))(
-                      tinycolor(raw),
-                    ),
+                      tinycolor(raw)
+                    )
                   )
                   .find(el => el.darkEnough)
                   .col.toHexString() || "#000000";

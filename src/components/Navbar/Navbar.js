@@ -2,21 +2,28 @@ import React from "react";
 import { Link } from "gatsby";
 import styles from "./NavHeader.module.scss";
 
-const NavSpacer = () => <span className="f5 f4-ns spacer">/</span>;
+const NavSpacer = () => <span className="f5 f4-ns spacer"></span>;
 
-const NavItem = ({ text, href, children }) => (
-  <span className="link dim ph3">
+const NavItem = ({ text, href, children, external }) => {
+  const item = external ? (
+    <a href={href}>{text || children}</a>
+  ) : (
     <Link to={href}>{text || children}</Link>
-  </span>
-);
+  );
+
+  return <span className="link dim ph3">{item}</span>;
+};
 
 const NavMenu = () => (
   <nav className="v-mid graphik f6 f5-ns fw7">
+    <NavItem text={"About"} href={"/#about"} />
+    <NavSpacer />
+
     <NavItem text={"Members"} href={"/developers"} />
     <NavSpacer />
-    <NavItem text={"Jobs"} href={"#"} />
-    <NavSpacer />
-    <NavItem text={"Join"} href={"#"} />
+    {/* <NavItem text={"Jobs"} href={"#"} />
+    <NavSpacer /> */}
+    <NavItem text={"Join"} href={"/.netlify/functions/oauth-init"} external />
   </nav>
 );
 
