@@ -76,7 +76,7 @@ export default class UserGrid extends Component {
       <div className={styles.wrapper}>
         {!profilesLoaded && (
           <div className={styles.loader}>
-            <Loader />
+            <Loader message={"Finding some coders..."} />
           </div>
         )}
         <div
