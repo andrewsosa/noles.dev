@@ -5,12 +5,21 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
 
-const clientId = process.env.GITHUB_CLIENT_ID;
-const githubAuthUrl = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${clientId}`;
+const querystring = require("querystring");
+
+const baseUrl = `https://github.com/login/oauth/authorize?`;
+const params = querystring.stringify({
+  scope: "user:email",
+  client_id: process.env.GITHUB_CLIENT_ID,
+  redirect_uri:
+    process.env.NODE_ENV === "production"
+      ? "https://noles.dev/signup"
+      : "http://localhost:8888/signup",
+});
 
 // eslint-disable-next-line no-unused-vars
 module.exports.handler = async (event, context) => ({
   statusCode: 302,
-  headers: { Location: githubAuthUrl },
+  headers: { Location: baseUrl + params },
   body: "Redirecting...",
 });
