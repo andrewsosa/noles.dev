@@ -4,12 +4,13 @@ import React, { Component } from "react";
 import { MainLayout } from "../components/Layout";
 import Profile from "../components/Profile";
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: undefined,
       complete: false,
     };
     this.confirmUser = this.confirmUser.bind(this);
@@ -54,22 +55,30 @@ class SignUp extends Component {
     return (
       <MainLayout>
         <div className="mw8 center pa2">
-          <h1 className="tc f3 f2-ns fw7">Is this you?</h1>
-          <div className="mw5 center mt5 mb4">
-            <Profile key={user.id} user={user} onRender={() => {}} />
-          </div>
-          <div className="mw5 center mb5">
-            <Button
-              href={"#"}
-              style={{
-                backgroundColor: "var(--gray)",
-              }}
-              onClick={this.confirmUser}
-            >
-              <span>Yep, sign me up.</span>
-              <span className="ph2">→</span>
-            </Button>
-          </div>
+          {user === undefined ? (
+            <div className="min-vh-100 pt5">
+              <Loader message={"Loading your profile..."} />
+            </div>
+          ) : (
+            <>
+              <h1 className="tc f3 f2-ns fw7">Is this you?</h1>
+              <div className="mw5 center mt5 mb4">
+                <Profile key={user.id} user={user} onRender={() => {}} />
+              </div>
+              <div className="mw5 center mb5">
+                <Button
+                  href={"#"}
+                  style={{
+                    backgroundColor: "var(--gray)",
+                  }}
+                  onClick={this.confirmUser}
+                >
+                  <span>Yep, sign me up.</span>
+                  <span className="ph2">→</span>
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </MainLayout>
     );
