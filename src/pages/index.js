@@ -82,7 +82,7 @@ const Main = () => (
         <div className="w-100 w-90-m w-70-l ph2 center contain relative">
           <h1 className="f2 fw7 tc mb4">Connect with recruiters and peers.</h1>
           <Button
-            href={"#"}
+            href={"/.netlify/functions/oauth-init"}
             style={{
               backgroundColor: "var(--gray)",
             }}
