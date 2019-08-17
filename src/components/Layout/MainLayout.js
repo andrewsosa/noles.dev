@@ -12,7 +12,7 @@ import "../../styles/type.css";
 import "../../styles/colors.css";
 
 const MainLayout = ({ children }) => (
-  <div className="graphik">
+  <div className="graphik min-vh-100 relative">
     {/* Start with Navbar */}
     <Container>
       <Navbar />
