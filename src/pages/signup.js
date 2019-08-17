@@ -21,7 +21,7 @@ class SignUp extends Component {
     const code = search.get("code");
 
     axios
-      .post(`${process.env.API_PREFIX}/oauth-load-user`, {
+      .post(`${process.env.GATSBY_API_PREFIX}/oauth-load-user`, {
         code,
       })
       .then(res => res.data)
@@ -31,7 +31,7 @@ class SignUp extends Component {
   confirmUser() {
     const { confirmToken: token } = this.state.user;
     axios
-      .post(`${process.env.API_PREFIX}/oauth-confirm-user`, {
+      .post(`${process.env.GATSBY_API_PREFIX}/oauth-confirm-user`, {
         token,
       })
       .then(res => {

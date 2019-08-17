@@ -18,7 +18,7 @@ export default class UserGrid extends Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    const apiUrl = `${process.env.API_PREFIX}/users`;
+    const apiUrl = `${process.env.GATSBY_API_PREFIX}/users`;
     const { limit } = this.props;
     axios
       .get(apiUrl)
