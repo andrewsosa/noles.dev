@@ -1,3 +1,5 @@
+require("../config");
+
 const axios = require("axios");
 const shuffle = require("shuffle-array");
 const cache = require("./lib/cache");

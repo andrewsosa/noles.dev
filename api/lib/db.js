@@ -1,16 +1,7 @@
-// eslint-disable-next-line global-require
-if (process.env.NODE_ENV === undefined) require("dotenv").config();
-
-// Only prod users userdb
-let dbkey = "users";
-if (
-  process.env.NODE_ENV === undefined ||
-  process.env.NODE_ENV.toLowerCase() === "development"
-) {
-  dbkey = "users-test";
-}
+require("../../config");
 
 const db = require("monk")(process.env.MONGO_URI);
+const dbkey = process.env.DB_KEY;
 
 module.exports = {
   db,

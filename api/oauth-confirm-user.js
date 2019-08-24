@@ -1,3 +1,5 @@
+require("../config");
+
 const axios = require("axios");
 const cache = require("./lib/cache");
 const db = require("./lib/db");

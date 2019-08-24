@@ -1,8 +1,4 @@
-// eslint-disable-next-line global-require
-// if (process.env.NODE_ENV === undefined) {
-//   require("dotenv").config();
-//   console.log("cache.js using dotenv...");
-// }
+require("../../config");
 
 const crypto = require("crypto");
 const redis = require("redis");

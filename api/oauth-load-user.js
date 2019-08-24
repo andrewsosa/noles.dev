@@ -1,3 +1,5 @@
+require("../config");
+
 const axios = require("axios");
 const Octokit = require("@octokit/rest");
 const cache = require("./lib/cache");
