@@ -1,11 +1,10 @@
-require("../config");
-
 const axios = require("axios");
-const cache = require("./lib/cache");
-const db = require("./lib/db");
+const cache = require("../lib/cache");
+const db = require("../lib/db");
+const middleware = require("../lib/middleware");
 
 // eslint-disable-next-line no-unused-vars
-module.exports.handler = async (event, context) => {
+module.exports.handler = middleware(async (event, context) => {
   // Token to cache storing user handle
   const { token } = JSON.parse(event.body);
   const { login, emails } = JSON.parse(await cache.oauth.get("confirm", token));
@@ -31,4 +30,4 @@ module.exports.handler = async (event, context) => {
       result: result ? "OK" : "Error...",
     }),
   };
-};
+});

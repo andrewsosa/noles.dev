@@ -1,6 +1,6 @@
-require("../../config");
+const monk = require("monk");
 
-const db = require("monk")(process.env.MONGO_URI);
+const db = monk(process.env.MONGO_URI);
 const dbkey = process.env.DB_KEY;
 
 module.exports = {

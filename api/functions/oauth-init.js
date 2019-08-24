@@ -1,8 +1,6 @@
 /* Initial OAuth flow by redirecting to Github */
-
-require("../config");
-
 const querystring = require("querystring");
+const middleware = require("../lib/middleware");
 
 const baseUrl = `https://github.com/login/oauth/authorize?`;
 const params = querystring.stringify({
@@ -13,8 +11,8 @@ const params = querystring.stringify({
 console.log(params);
 
 // eslint-disable-next-line no-unused-vars
-module.exports.handler = async (event, context) => ({
+module.exports.handler = middleware(async (event, context) => ({
   statusCode: 302,
   headers: { Location: baseUrl + params },
   body: "Redirecting...",
-});
+}));

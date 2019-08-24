@@ -1,8 +1,7 @@
-require("../config");
-
 const axios = require("axios");
 const Octokit = require("@octokit/rest");
-const cache = require("./lib/cache");
+const cache = require("../lib/cache");
+const middleware = require("../lib/middleware");
 
 const {
   GITHUB_CLIENT_ID: client_id, // eslint-disable-line camelcase
@@ -10,7 +9,7 @@ const {
 } = process.env;
 
 // eslint-disable-next-line no-unused-vars
-module.exports.handler = async (event, context) => {
+module.exports.handler = middleware(async (event, context) => {
   const { code } = JSON.parse(event.body);
 
   // Ask github for the OAuth Access Token
@@ -51,4 +50,4 @@ module.exports.handler = async (event, context) => {
     headers: { "content-type": "application/json" },
     body: JSON.stringify(userdata),
   };
-};
+});

@@ -55,6 +55,7 @@ typings/
 .env
 .env.development
 .env.production
+serverless.env.yml
 
 # gatsby files
 .cache/

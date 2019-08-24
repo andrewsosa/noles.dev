@@ -1,5 +1,3 @@
-require("../../config");
-
 const crypto = require("crypto");
 const redis = require("redis");
 
