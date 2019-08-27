@@ -26,13 +26,20 @@ const loadSingleUser = async username => {
 };
 
 // eslint-disable-next-line no-unused-vars
-module.exports.handler = middleware(async (event, context) => {
+const getUsers = async (event, context, callback) => {
+  // Load users from db
   const users = shuffle(await db.users().getAll());
+  db.conn.close();
+
+  // get userdata from github
   const data = await Promise.all(users.map(loadSingleUser));
+  cache.client.quit();
 
   return {
     statusCode: 200,
     headers: { "content-type": "application/json" },
     body: JSON.stringify(data),
   };
-});
+};
+
+module.exports.handler = middleware(getUsers);

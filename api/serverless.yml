@@ -20,13 +20,12 @@ org: andrewsosa
 # frameworkVersion: "=X.X.X"
 
 custom:
-  stage: dev
-  env: ${file(serverless.env.yml):${self:custom.stage}}
+  env: ${file(serverless.env.yml):${opt:stage, "dev"}}
 
 provider:
   name: aws
-  runtime: nodejs10.x
-  stage: ${opt:stage, ${self:custom.stage}}
+  runtime: nodejs8.10
+  stage: dev
   environment: ${self:custom.env}
   #  region: us-east-1
 plugins:
@@ -68,6 +67,27 @@ functions:
       - http:
           path: users
           method: get
+          cors: true
+  oauth-init:
+    handler: functions/oauth-init.handler
+    events:
+      - http:
+          path: oauth-init
+          method: get
+          cors: true
+  oauth-load-user:
+    handler: functions/oauth-load-user.handler
+    events:
+      - http:
+          path: oauth-load-user
+          method: post
+          cors: true
+  oauth-confirm-user:
+    handler: functions/oauth-confirm-user.handler
+    events:
+      - http:
+          path: oauth-confirm-user
+          method: post
           cors: true
 #  hello:
 #    handler: handler.hello

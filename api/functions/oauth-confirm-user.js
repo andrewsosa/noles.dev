@@ -1,4 +1,3 @@
-const axios = require("axios");
 const cache = require("../lib/cache");
 const db = require("../lib/db");
 const middleware = require("../lib/middleware");
@@ -8,6 +7,7 @@ module.exports.handler = middleware(async (event, context) => {
   // Token to cache storing user handle
   const { token } = JSON.parse(event.body);
   const { login, emails } = JSON.parse(await cache.oauth.get("confirm", token));
+  cache.client.quit();
 
   // Attempt to save the user
   let result = true;
@@ -21,6 +21,9 @@ module.exports.handler = middleware(async (event, context) => {
   } catch (err) {
     result = false;
   }
+
+  // Close db connection
+  db.conn.close();
 
   // Send userdata back to app
   return {

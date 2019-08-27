@@ -43,6 +43,7 @@ module.exports.handler = middleware(async (event, context) => {
       emails: userdata.emails,
     })
   );
+  cache.client.quit();
 
   // Send userdata back to app
   return {

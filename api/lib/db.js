@@ -4,7 +4,7 @@ const db = monk(process.env.MONGO_URI);
 const dbkey = process.env.DB_KEY;
 
 module.exports = {
-  db,
+  conn: db,
   users: () => {
     const users = db.get(dbkey);
     return {

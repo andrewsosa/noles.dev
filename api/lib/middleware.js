@@ -1,12 +1,14 @@
 const middy = require("middy");
 const {
+  cors,
+  doNotWaitForEmptyEventLoop,
   httpErrorHandler,
   httpHeaderNormalizer,
-  cors,
 } = require("middy/middlewares");
 
 module.exports = handler =>
   middy(handler)
     .use(cors())
     .use(httpHeaderNormalizer())
-    .use(httpErrorHandler());
+    .use(httpErrorHandler())
+    .use(doNotWaitForEmptyEventLoop());

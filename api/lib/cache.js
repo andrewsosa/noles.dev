@@ -7,6 +7,7 @@ const client = redis.createClient(`redis://:${REDIS_PASSWORD}@${REDIS_HOST}/0`);
 const key = (tag, token) => `${tag}__${token}`;
 
 module.exports = {
+  client,
   oauth: {
     get: async (tag, token) =>
       new Promise((res, rej) =>
@@ -31,5 +32,4 @@ module.exports = {
       client.setex(key("userdata", username), ttl, JSON.stringify(data));
     },
   },
-  client, // so tests can close the client
 };
