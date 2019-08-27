@@ -24,6 +24,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
