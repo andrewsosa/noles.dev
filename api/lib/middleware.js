@@ -8,7 +8,7 @@ const {
 
 module.exports = handler =>
   middy(handler)
-    .use(cors())
-    .use(httpHeaderNormalizer())
     .use(httpErrorHandler())
-    .use(doNotWaitForEmptyEventLoop());
+    .use(httpHeaderNormalizer())
+    .use(cors());
+// .use(doNotWaitForEmptyEventLoop());
