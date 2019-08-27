@@ -1,6 +1,6 @@
 [build]
 base = "web/"
-publish = "build"
+publish = "web/public/"
 command = "npm run build"
 # functions = "api/" # netlify-lambda builds to this folder AND Netlify reads functions from here
 #   command = "yarn build" # the command you run to build this file
