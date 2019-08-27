@@ -1,10 +1,12 @@
-require("./config");
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
-  proxy: {
-    prefix: process.env.API_PREFIX,
-    url: "http://localhost:34567",
-  },
+  // proxy: {
+  //   prefix: process.env.GATSBY_API_PREFIX,
+  //   url: process.env.GATSBY_API_URL,
+  // },
   siteMetadata: {
     title: `NOLES.DEV`,
     description: `NOLES.DEV`,

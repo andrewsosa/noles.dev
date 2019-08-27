@@ -23,7 +23,11 @@ const NavMenu = () => (
     <NavSpacer />
     {/* <NavItem text={"Jobs"} href={"#"} />
     <NavSpacer /> */}
-    <NavItem text={"Join"} href={"/.netlify/functions/oauth-init"} external />
+    <NavItem
+      text={"Join"}
+      href={`${process.env.GATSBY_API_PREFIX}/oauth-init`}
+      external
+    />
   </nav>
 );
 
