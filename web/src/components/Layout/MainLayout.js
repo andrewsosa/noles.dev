@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Container from "./Container";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import SEO from "../seo";
 
 import "tachyons/css/tachyons.css";
 
@@ -14,6 +15,7 @@ import "../../styles/colors.css";
 const MainLayout = ({ children }) => (
   <div className="graphik min-vh-100 relative">
     {/* Start with Navbar */}
+    <SEO />
     <Container>
       <Navbar />
     </Container>
