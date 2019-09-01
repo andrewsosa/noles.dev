@@ -12,7 +12,7 @@ const loadSingleUser = async username => {
     const data = await cache.userdata.get(username);
     if (data) {
       console.log("Using cache for", username);
-      console.log("Found data:", data);
+      // console.log("Found data:", data);
       return data;
     }
   } catch (err) {
@@ -43,7 +43,11 @@ const getUsers = async (event, context, callback) => {
 
   return {
     statusCode: 200,
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    },
     body: JSON.stringify(data),
   };
 };

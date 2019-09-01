@@ -35,7 +35,8 @@ module.exports.handler = middleware(async (event, context) => {
 
   // Generate and send a secure token which the app can send
   // back to confirm the join process. (300s TTL)
-  userdata.confirmToken = cache.open().oauth.put(
+  cache.open();
+  userdata.confirmToken = cache.oauth.put(
     "confirm",
     300,
     JSON.stringify({
@@ -48,7 +49,11 @@ module.exports.handler = middleware(async (event, context) => {
   // Send userdata back to app
   return {
     statusCode: 200,
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    },
     body: JSON.stringify(userdata),
   };
 });

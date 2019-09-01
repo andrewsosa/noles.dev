@@ -6,9 +6,8 @@ const middleware = require("../lib/middleware");
 module.exports.handler = middleware(async (event, context) => {
   // Token to cache storing user handle
   const { token } = JSON.parse(event.body);
-  const { login, emails } = JSON.parse(
-    await cache.open().oauth.get("confirm", token)
-  );
+  cache.open();
+  const { login, emails } = JSON.parse(await cache.oauth.get("confirm", token));
   cache.close();
 
   // Attempt to save the user
@@ -30,7 +29,11 @@ module.exports.handler = middleware(async (event, context) => {
   // Send userdata back to app
   return {
     statusCode: result ? 200 : 500,
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    },
     body: JSON.stringify({
       result: result ? "OK" : "Error...",
     }),
