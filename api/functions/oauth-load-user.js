@@ -35,7 +35,7 @@ module.exports.handler = middleware(async (event, context) => {
 
   // Generate and send a secure token which the app can send
   // back to confirm the join process. (300s TTL)
-  userdata.confirmToken = cache.oauth.put(
+  userdata.confirmToken = cache.open().oauth.put(
     "confirm",
     300,
     JSON.stringify({
@@ -43,7 +43,7 @@ module.exports.handler = middleware(async (event, context) => {
       emails: userdata.emails,
     })
   );
-  cache.client.quit();
+  cache.close();
 
   // Send userdata back to app
   return {

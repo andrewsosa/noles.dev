@@ -6,17 +6,19 @@ const middleware = require("../lib/middleware");
 module.exports.handler = middleware(async (event, context) => {
   // Token to cache storing user handle
   const { token } = JSON.parse(event.body);
-  const { login, emails } = JSON.parse(await cache.oauth.get("confirm", token));
-  cache.client.quit();
+  const { login, emails } = JSON.parse(
+    await cache.open().oauth.get("confirm", token)
+  );
+  cache.close();
 
   // Attempt to save the user
   let result = true;
   try {
-    if (db.users().checkUser(login))
+    if (await db.users().findUser(login))
       console.log(`${login} already member, skipping...`);
     else {
       console.log("Adding", login);
-      db.users().addUser(login, emails);
+      await db.users().addUser(login, emails);
     }
   } catch (err) {
     result = false;

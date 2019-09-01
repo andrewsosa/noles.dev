@@ -8,15 +8,20 @@ const middleware = require("../lib/middleware");
 const githubUrl = username => `https://api.github.com/users/${username}`;
 
 const loadSingleUser = async username => {
-  let data = await cache.userdata.get(username);
-  if (data) {
-    console.log("Using cache for", username);
-    return data;
+  try {
+    const data = await cache.userdata.get(username);
+    if (data) {
+      console.log("Using cache for", username);
+      console.log("Found data:", data);
+      return data;
+    }
+  } catch (err) {
+    console.log(err);
   }
 
   try {
     console.log("Hitting remote for", username);
-    ({ data } = await axios.get(githubUrl(username)));
+    const { data } = await axios.get(githubUrl(username));
     cache.userdata.put(username, 300, data);
     return data;
   } catch (err) {
@@ -32,8 +37,9 @@ const getUsers = async (event, context, callback) => {
   db.conn.close();
 
   // get userdata from github
+  cache.open();
   const data = await Promise.all(users.map(loadSingleUser));
-  cache.client.quit();
+  cache.close();
 
   return {
     statusCode: 200,

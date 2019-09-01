@@ -20,16 +20,27 @@ org: andrewsosa
 # frameworkVersion: "=X.X.X"
 
 custom:
-  env: ${file(serverless.env.yml):${opt:stage, "dev"}}
+  stage: ${opt:stage, 'dev'}
+  env: ${file(serverless.env.yml):${self:custom.stage}}
+  domains:
+    prod: prod.api.noles.dev
+    staging: staging.api.noles.dev
+    dev: dev.api.noles.dev
+  customDomain:
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: ${self:custom.stage}
+    createRoute53Record: true
 
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
+  stage: ${self:custom.stage}
   environment: ${self:custom.env}
   #  region: us-east-1
+
 plugins:
   - serverless-offline
+  - serverless-domain-manager
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:

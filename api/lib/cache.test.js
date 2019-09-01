@@ -41,6 +41,10 @@ describe("cache.userdata", () => {
   });
 });
 
+beforeAll(() => {
+  cache.open();
+});
+
 afterAll(() => {
-  cache.client.quit();
+  cache.close();
 });

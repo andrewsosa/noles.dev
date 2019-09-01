@@ -9,7 +9,7 @@ module.exports = {
     const users = db.get(dbkey);
     return {
       addUser: async (username, emails) => users.insert({ username, emails }),
-      checkUser: async username => users.findOne({ username }),
+      findUser: async username => users.findOne({ username }),
       getAll: async () => users.distinct("username"),
       delUser: async username => users.remove({ username }),
     };
