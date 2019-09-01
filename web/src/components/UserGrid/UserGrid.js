@@ -48,25 +48,17 @@ export default class UserGrid extends Component {
   onChildLoad(text) {
     console.log("onChildLoad", text);
     const { loadedNodes, userdata } = this.state;
+    const newLoadedNodes = loadedNodes + 1;
     const profilesLoaded =
-      loadedNodes !== 0 && loadedNodes + 1 === userdata.length;
+      newLoadedNodes !== 0 && newLoadedNodes === userdata.length;
     this.setState({
       profilesLoaded,
-      loadedNodes: loadedNodes + 1,
+      loadedNodes: newLoadedNodes,
     });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  allChildrenLoaded(state) {
-    const result =
-      state.loadedNodes !== 0 && state.loadedNodes === state.userdata.length;
-    console.log("allChildrenLoaded?", result);
-    console.log(state.loadedNodes, state.userdata.length);
-    return result;
-  }
-
   render() {
-    console.log("RENDER");
+    console.log("UserGrid.render");
     const { userdata, profilesLoaded } = this.state;
 
     // If the profiles are loaded, pass a dummy onRender
