@@ -1,8 +1,8 @@
-release:
-	( cd api/ ; serverless deploy -s prod )
-	git push -f origin master:release
+prod:
+	git push -f origin master:prod
 
 staging:
-	( cd api/ ; serverless deploy -s staging )
 	git push -f origin master:staging
 
+dev:
+	git push -f origin master:dev
