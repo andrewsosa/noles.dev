@@ -2,24 +2,27 @@
 base = "web/"
 publish = "web/public/"
 command = "npm run build"
-# functions = "api/" # netlify-lambda builds to this folder AND Netlify reads functions from here
-#   command = "yarn build" # the command you run to build this file
-#   publish = "build" # create-react-app builds to this folder, Netlify should serve all these files statically
 
-# [dev]
-# functions = "api/"
-# command = "make dev"
-
-# [context.development]
-# [context.development.environment]
-# NODE_ENV = "development"
 
 # # Production context: all deploys from the Production branch set in your site's
 # # deploy contexts will inherit these settings.
-# [context.production]
+[context.production]
+[context.production.environment]
+GATSBY_API_PREFIX = "https://prod.api.noles.dev"
 #   publish = "project/output/"
 #   command = "make publish"
 #   environment = { ACCESS_TOKEN = "super secret", NODE_VERSION = "8.0.1" }
+
+# Specific branch context: all deploys from this specific branch will inherit
+# these settings.
+[context.staging] # 'staging' is a branch name
+[context.staging.environment]
+GATSBY_API_PREFIX = "https://staging.api.noles.dev"
+
+[context.dev]
+[context.dev.environment]
+GATSBY_API_PREFIX = "https://dev.api.noles.dev"
+
 
 # # Deploy Preview context: all deploys generated from a pull/merge request will
 # # inherit these settings.
@@ -44,11 +47,6 @@ command = "npm run build"
 #     GITHUB_CLIENT_SECRET = "91622514ce4b254f0391cf95c3e71a86c09e6de8"
 
 
-# # Specific branch context: all deploys from this specific branch will inherit
-# # these settings.
-# [context.staging] # 'staging' is a branch name
-#   command = "echo 'staging'"
-#   base = "staging"
 
 # # For contexts of branches with special characters, enclose the branch name
 # # with quotes.
