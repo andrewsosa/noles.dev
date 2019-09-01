@@ -72,6 +72,14 @@ const Main = () => (
             there's a growing need for coders. Let's get out there and get to
             work.
           </p>
+          <p className="w-100 mh0 mt0 pr0 pr3-l measure lh-copy f5 f4-l mt4">
+            <a
+              className="light-gray underline"
+              href="https://github.com/andrewsosa/noles.dev#--nolesdev"
+            >
+              Read more →
+            </a>
+          </p>
         </div>
       </div>
     </div>
