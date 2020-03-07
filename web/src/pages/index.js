@@ -1,109 +1,49 @@
 import React from "react";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 
-import Octicon, { MarkGithub } from "@githubprimer/octicons-react";
+// import Octicon, { MarkGithub } from "@githubprimer/octicons-react";
 
 import { Container, MainLayout } from "../components/Layout";
-import Button from "../components/Button";
-import UserGrid from "../components/UserGrid";
+// import Button from "../components/Button";
+// import UserGrid from "../components/UserGrid";
 
-const bgGray = { backgroundColor: "var(--gray)" };
-
-const ButtonGroup = ({ children }) => (
-  <div className="flex-ns justify-center">
-    {children.map((child, i) => (
-      <span key={i} className="w5 mt4 mh3">
-        {child}
-      </span>
-    ))}
-  </div>
-);
+// const bgGray = { backgroundColor: "var(--gray)" };
+import screencap from "../images/noles.dev.png";
 
 const Main = () => (
   <MainLayout>
-    {/* Usergrid + See All */}
-    <Container>
-      <div className="pv5">
-        {/* <div className=" pb5">
-          <h1 className="f2 fw7 lh-title db tc pb2">
-            Find your next developer here.
-          </h1>
-          <p className="f4 lh-copy tc measure center">
-            NOLES.DEV is a community of developers searching for their next big
-            project.
-          </p>
-          <ButtonGroup>
-            <Button style={bgGray} href={"/for/developers"} arrow>
-              <span className="pl3">For Developers</span>
-            </Button>
-            <Button style={bgGray} href={"/for/recruiters"} arrow>
-              <span className="pl3">For Recruiters</span>
-            </Button>
-            <Button style={bgGray} href={"/for/organizations"} arrow>
-              <span className="pl3">For Student Groups</span>
-            </Button>
-          </ButtonGroup>
-        </div> */}
-        <UserGrid limit={8} />
-        <Link to="/developers">
-          <Button style={bgGray} arrow>
-            <span>See all developers</span>
-          </Button>
-        </Link>
-      </div>
-    </Container>
+    {/* <Container> */}
+    <article className="content fw4">
+      <h1>noles.dev is retired. </h1>
+      <p>Why though?</p>
+      <p>{`Frankly, because nobody is using this site, I don't think enough
+           people could be made care about this site, and the backend with
+           AWS has upkeep costs.`}</p>
+      <p>{`The original goal was to help FSU students (hence noles.dev) get
+           discovered by their employers and peers. The trouble is that I
+           made the site after I had left school. `}</p>
+      <p>
+        {`This site operates under voluntary enrollement. The original
+        inspiration for this site, `}
+        <a className="b underline-hover" href="https://womenwho.design">
+          womenwho.design
+        </a>
+        {`, operated on a nomination system. However, I did not feel it was
+        ethical to scrape Github profiles without user consent, or figure out
+        who was an FSU student from those scraped profiles. `}
+      </p>
+      <p>
+        {`And so, we're putting noles.dev to bed. It was an excellent learning
+        experience for React, Gatsby, Netlify, and AWS. You can find a screencap
+        of the original site below, and naturally, the source is on `}
+        <a href="https://github.com/andrewsosa/noles.dev">Github</a>.
+      </p>
+      <p>Cheers,</p>
+      <p>Andrew</p>
 
-    {/* Why NOLES.DEV */}
-    <div
-      id="about"
-      className="pv5 white"
-      style={{ backgroundColor: "var(--gray)" }}
-    >
-      <div className="mw8 ph4 center">
-        <h3 className="f5 fw7 pv4 ttu tracked">About</h3>
-        <div className="w-100 center mw9">
-          <p className="f4 f3-m mt0 db w-100 f-subheadline-l lh-copy lh-title-l measure mb4 fw6">
-            Bringing together the Florida State developer community.
-          </p>
-          <p className="w-100 mh0 mt0 pr0 pr3-l measure lh-copy f5 f4-l">
-            FSU developers belong to different departments, colleges, and clubs.
-            Our mission is to reach developers from across all of campus to find
-            their next big project. From student groups to local businesses,
-            there's a growing need for coders. Let's get out there and get to
-            work.
-          </p>
-          <p className="w-100 mh0 mt0 pr0 pr3-l measure lh-copy f5 f4-l mt4">
-            <a
-              className="light-gray underline"
-              href="https://github.com/andrewsosa/noles.dev#--nolesdev"
-            >
-              Read more →
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Pitch */}
-    <Container>
-      <div className="center pv6">
-        <div className="w-100 w-90-m w-70-l ph2 center contain relative">
-          <h1 className="f2 fw7 tc mb4">Connect with recruiters and peers.</h1>
-          <Button
-            href={`${process.env.GATSBY_API_PREFIX}/oauth-init`}
-            style={{
-              backgroundColor: "var(--gray)",
-            }}
-          >
-            <span className="ph2">
-              <Octicon icon={MarkGithub} />
-            </span>
-            <span>Join with Github</span>
-            <span className="ph2 graphik">→</span>
-          </Button>
-        </div>
-      </div>
-    </Container>
+      <img className="b--black-10 bw1 b--solid" src={screencap} />
+    </article>
+    {/* </Container> */}
   </MainLayout>
 );
 

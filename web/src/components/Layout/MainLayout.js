@@ -7,25 +7,22 @@ import SEO from "../seo";
 import "tachyons/css/tachyons.css";
 
 import "../../styles/fonts.css";
-import "../../styles/normalize.css";
 import "../../styles/dimen.css";
 import "../../styles/type.css";
 import "../../styles/colors.css";
 
 const MainLayout = ({ children }) => (
-  <div className="graphik min-vh-100 relative">
+  <section className="graphik min-vh-100 relative">
     {/* Start with Navbar */}
     <SEO />
-    <Container>
-      <Navbar />
-    </Container>
+    <Container>{/* <Navbar /> */}</Container>
 
     {/* Then the children */}
     {children}
 
     {/* Then the footer */}
-    <Footer />
-  </div>
+    {/* <Footer /> */}
+  </section>
 );
 
 export default MainLayout;
