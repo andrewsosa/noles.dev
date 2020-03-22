@@ -1,32 +1,27 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://noles.dev">
-    <img alt="Gatsby" src="https://noles.dev/icons/icon-512x512.png" width="60" />
+    <img alt="noles.dev" src="web/src/images/nolesdevicon.png" width="60" />
   </a>
 </p>
 <h1 align="center">
   NOLES.DEV
 </h1>
 
-#### What is [`noles.dev`](https://noles.dev)?
-It's like a phonebook of Github profiles for FSU student and alumni developers.
+### noles.dev is retired.
 
-#### What's the point?
-* Connect students with their peers.
-* Help recruiters discover talented students.
-* Inspire new generations of seminole developers.
+Why though?
 
-## Getting Started 🚀
+The original goal was to help FSU students (hence noles.dev) get discovered by their employers and peers. However, nobody is looking at this site, and if nobody is looking at it, nobody is using it.
 
-1. Click [**Join**](https://prod.api.noles.dev/oauth-init), or from the [noles.dev](https://noles.dev) page.
-2. Authorize through Github. We'll pull data from your profile and display it on the site.
-3. Confirm you want to join. You'll get a preview of your profile -- you can still make changes later!
+This site operates under voluntary enrollement. The original inspiration for this site, [womenwho.design](https://womenwho.design), operated on a nomination system. However, I did not feel it was ethical to scrape Github profiles without user consent, or figure out who was an FSU student from those scraped profiles.
+
+And so, we're putting noles.dev to bed. It was an excellent learning experience for React, Gatsby, Netlify, and AWS. You can find a screencap of the original site below, and naturally, the source is here on Github.
+
+Cheers,
+
+Andrew
 
 
-## FAQ 🤔
+<hr />
 
-#### How do I update my profile?
-Just update your profile over on Github! We keep a cached copy which expires in 10 minutes, check back in a little it.
-
-#### Why do you need my email?
-In the near future we'll be verifying whether users attended FSU via their Github-linked email addresses. We'll never, *ever* give away or sell your email address or any other data.
+![noles.dev](web/src/images/noles.dev.png)
